@@ -1,7 +1,7 @@
 package edu.mu.Cooking;
 
+import edu.mu.Orders.PizzaOrder;
 import edu.mu.pizza.AbstractPizza;
-import edu.mu.pizza.PizzaOrder;
 import edu.mu.pizzaTypes.HawaiianPizza;
 import edu.mu.pizzaTypes.MargheritaPizza;
 import edu.mu.pizzaTypes.PizzaType;

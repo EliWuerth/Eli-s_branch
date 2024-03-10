@@ -2,7 +2,7 @@ package edu.mu;
 
 import edu.mu.pizzaTypes.PizzaType;
 import edu.mu.Cooking.*;
-import edu.mu.pizza.PizzaOrder;
+import edu.mu.Orders.PizzaOrder;
 
 public class Main {
 
