@@ -1,9 +1,12 @@
 package edu.mu.pizza;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import edu.mu.Cooking.ICookingStrategy;
+
+//Abstract class representing a generic pizza
 
 public abstract class AbstractPizza {
 	protected List<Toppings> toppingList;
@@ -22,6 +25,7 @@ public abstract class AbstractPizza {
 	 * @param cookingStrategy
 	 * @param cookingPrice
 	 */
+	//Constructor
 	public AbstractPizza(double priceWithoutToppings) {
 		toppingList = new ArrayList<>();
         this.priceWithoutToppings = priceWithoutToppings;
@@ -29,6 +33,8 @@ public abstract class AbstractPizza {
         orderID = ++orderIDCounter;
         
 	}
+	
+	//GETTERS and SETTERS
 
 	public double getTotalPrice() {
 		return totalPrice;
@@ -79,29 +85,34 @@ public abstract class AbstractPizza {
 		this.orderID = pizzaOrderID;
 	}
 
-
+	//Abstract method for adding topping price
 	protected abstract double addToppingsToPrice(double priceWithoutToppings);
 
+	//Abstract method for updating the pizzaPrice
     public abstract double updatePizzaPrice();
 
+    //Adds toppings
     public void addTopping(Toppings topping) {
         toppingList.add(topping);
     }
 
+    //Sets the cooking strategy
     public void setCookingStrategy(ICookingStrategy cookingStrategy) {
         this.cookingStrategy = cookingStrategy;
     }
 
+    //Gets the list of toppings on a pizza
     public List<Toppings> getToppingList() {
         return toppingList;
     }
 
+    //Gets a pizza based off of the orderID
     public int getPizzaOrderID() {
         return orderID;
     }
 
+    // Default prices for each pizza type
     public double getPriceWithoutToppings() {
-        // Default prices for each pizza type
         switch (this.getClass().getSimpleName()) {
             case "MARGHERITA":
                 return 2.50;
@@ -116,6 +127,7 @@ public abstract class AbstractPizza {
         }
     }
 
+    //Prints the pizza information
     @Override
 	public String toString() {
 		return "Topping List: " + toppingList + ", Price Without Toppings: " + priceWithoutToppings
