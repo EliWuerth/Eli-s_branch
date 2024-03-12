@@ -11,18 +11,19 @@ import edu.mu.Cooking.MicrowaveCookingStrategy;
 import edu.mu.Cooking.PizzaCookingFactory;
 import edu.mu.pizzaTypes.PizzaType;
 
+
 public class PizzaOrder {
 	 private PizzaCookingFactory pizzaCookingFactory;
 	 private ICookingStrategy cookingStrategy;
 	 private List<AbstractPizza> pizzaOrderList;
 	
 	 
-	
+	//Constructor for the PizzaOrder class
 	 public PizzaOrder() {
 	     pizzaCookingFactory = new PizzaCookingFactory();
 	     pizzaOrderList = new ArrayList<>();
 	 }
-	
+	 //Prints toppings for a specific pizza order based on the orderID
 	 public void printListOfToppingsByPizzaOrderID(int orderID) {
 	     AbstractPizza pizza = getPizzaByOrderID(orderID);
 	     if (pizza != null) {
@@ -36,7 +37,7 @@ public class PizzaOrder {
 	 }
 	
 	 
-	
+	 //Gets the pizza based on orderID
 	 public AbstractPizza getPizzaByOrderID(int orderID) {
 		 try {
 			for (AbstractPizza pizza : pizzaOrderList) {
@@ -53,13 +54,13 @@ public class PizzaOrder {
 		}
 		return null;
 	 }
-	
+	 //Adds new pizza to pizzaOrderList
 	 public boolean addPizzaToCart(PizzaType pizzaType) {
 	     AbstractPizza pizza = pizzaCookingFactory.createPizza(pizzaType);
 	     
 	     return pizzaOrderList.add(pizza);
 	 }
-	
+	 //Adds new toppings to pizza
 	 public boolean addNewToppingToPizza(int orderID, Toppings topping) {
 	     AbstractPizza pizza = getPizzaByOrderID(orderID);
 	     if (pizza != null) {
@@ -69,7 +70,7 @@ public class PizzaOrder {
 	     }
 	     return false;
 	 }
-	
+	 //Removes topping from pizza and updates the price
 	 public boolean removeToppingFromPizza(int orderID, Toppings topping) {
 	     AbstractPizza pizza = getPizzaByOrderID(orderID);
 	     if (pizza != null && pizza.getToppingList().contains(topping)) {
@@ -80,7 +81,7 @@ public class PizzaOrder {
 	     }
 	     return false;
 	 }
-	
+	//Checks to make sure that all pizzas in the pizzaOrderList have cooking strategy
 	 public boolean isThereAnyUncookedPizza() {
 	     for (AbstractPizza pizza : pizzaOrderList) {
 	         if (pizza.getCookingStrategy() == null) {
@@ -89,7 +90,7 @@ public class PizzaOrder {
 	     }
 	     return false;
 	 }
-	
+	 //Calculates the total price of all the pizzas in the list
 	 public double checkout() throws Exception {
 		 while(isThereAnyUncookedPizza() == true) {
 			 throw new Exception("There are uncooked Pizzas");
@@ -104,7 +105,8 @@ public class PizzaOrder {
 	     }
 	     return totalPrice;
 	 }
-	
+	 //Selects the cooking strategy for pizzas in the list
+	 //Then cooks the pizza
 	 public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
 		 AbstractPizza pizza = getPizzaByOrderID(orderID);
 		    if (pizza != null) {
@@ -134,7 +136,7 @@ public class PizzaOrder {
 		        return false;
 		    }
 		}
-	 
+	 //Prints details about pizza orders
 	 public void printPizzaOrderCart(int orderID) {
 	     AbstractPizza pizza = getPizzaByOrderID(orderID);
 	     if (pizza != null) {
