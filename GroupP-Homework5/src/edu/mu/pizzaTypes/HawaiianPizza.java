@@ -22,28 +22,34 @@ public class HawaiianPizza extends AbstractPizza{
 	public HawaiianPizza(double priceWithoutToppings) {
 		super(3.00);
 		// TODO Auto-generated constructor stub
-		addToppingsToPrice(getPriceWithoutToppings());
         addTopping(Toppings.CANADIAN_BACON);
         addTopping(Toppings.CHEESE);
         addTopping(Toppings.PINEAPPLE);
-        
+        addToppingsToPrice(priceWithoutToppings);
+      
 	}
-
+	double toppingsPrice;
 	@Override
 	protected double addToppingsToPrice(double priceWithoutToppings) {
-		double toppingsPrice = 0;
         for (Toppings topping : toppingList) {
-        	toppingsPrice = topping.getToppingPrice() + priceWithoutToppings;
+        	toppingsPrice += topping.getToppingPrice();
+        	//System.out.println("getToppingPrice(): " + topping.getToppingPrice());
+        	
+        	//System.out.println("priceWithoutToppings: " + priceWithoutToppings);
         }
-        totalPrice = toppingsPrice + cookingPrice;
-        return totalPrice;
+        toppingsPrice += priceWithoutToppings;
+        System.out.println("toppingsPrice: " + toppingsPrice);
+        return toppingsPrice;
 	}
 
 	@Override
 	public double updatePizzaPrice() {
 		// TODO Auto-generated method stub
-		totalPrice = addToppingsToPrice(getPriceWithoutToppings()) + cookingPrice;
-		return 0;
+		totalPrice = toppingsPrice + cookingPrice;
+
+		System.out.println("getCookingPrice(): " + getCookingPrice());
+		
+		return totalPrice;
 	}
 	
 

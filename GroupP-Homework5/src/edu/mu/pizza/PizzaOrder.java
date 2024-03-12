@@ -61,7 +61,7 @@ public class PizzaOrder {
 	     AbstractPizza pizza = getPizzaByOrderID(orderID);
 	     if (pizza != null) {
 	         pizza.addTopping(topping);
-	         pizza.updatePizzaPrice();
+	         //pizza.updatePizzaPrice();
 	         return true;
 	     }
 	     return false;
@@ -93,7 +93,7 @@ public class PizzaOrder {
 
 	     double totalPrice = 0.0;
 	     for (AbstractPizza pizza : pizzaOrderList) {
-	         totalPrice += pizza.getTotalPrice();
+	    	 totalPrice = pizza.getTotalPrice() + pizza.getPriceWithoutToppings() + pizza.cookingPrice;
 	     }
 	     return totalPrice;
 	 }

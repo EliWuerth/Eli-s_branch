@@ -122,7 +122,7 @@ public abstract class AbstractPizza {
 	public String toString() {
 		return "Topping List: " + toppingList + ", Price Without Toppings: " + priceWithoutToppings
 				+ ", Total Price: " + totalPrice + ", Pizza Order ID: " + pizzaOrderID + ", Cooking Strategy: "
-				+ cookingStrategy + ", Cooking Price: " + cookingPrice + ", Pizza Type:" + getClass();
+				+ getCookingStrategy().getClass().getSimpleName() + ", Cooking Price: " + cookingPrice + ", Pizza Type: " + this.getClass().getSimpleName();
 	}
     
 }
