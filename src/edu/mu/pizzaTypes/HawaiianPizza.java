@@ -7,7 +7,7 @@ import edu.mu.pizza.AbstractPizza;
 import edu.mu.pizza.Toppings;
 
 /**
- * 
+ *
  */
 public class HawaiianPizza extends AbstractPizza{
 	

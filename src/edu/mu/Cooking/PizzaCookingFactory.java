@@ -9,10 +9,18 @@ import edu.mu.pizzaTypes.VegetarianPizza;
 
 public class PizzaCookingFactory {
 	private static int orderIDCounter = 0;
-
+	
+	/**
+	 * Creates a new pizza of the specified type.
+	 *
+	 * @param pizzaType The type of pizza to create.
+	 * @return A new pizza of the specified type.
+	 * @throws IllegalArgumentException If the specified pizza type is invalid.
+	 */
 	 public AbstractPizza createPizza(PizzaType pizzaType) {
 	     AbstractPizza pizza;
-
+	     
+	     
 	     switch (pizzaType) {
 	         case MARGHERITA:
 	             pizza = new MargheritaPizza(2.50);
@@ -28,9 +36,9 @@ public class PizzaCookingFactory {
 	             break;
 	         default:
 	             throw new IllegalArgumentException("Invalid pizza type: " + pizzaType);
-	     }
-
-	     pizza.setPizzaOrderID(++orderIDCounter);
-	     return pizza;
-	 }
-	}
+		     }
+		
+		     pizza.setPizzaOrderID(++orderIDCounter);
+		     return pizza;
+		 }
+}
