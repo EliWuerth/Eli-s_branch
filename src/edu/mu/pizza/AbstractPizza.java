@@ -9,12 +9,11 @@ public abstract class AbstractPizza {
 	protected List<Toppings> toppingList;
 	protected double priceWithoutToppings;
 	protected double totalPrice;
-	protected int pizzaOrderID;
+	protected int orderID;
 	protected static int orderIDCounter = 1; 
 	protected ICookingStrategy cookingStrategy;
 	protected double cookingPrice;
-	
-	
+
 	/**
 	 * @param toppingList
 	 * @param priceWithoutToppings
@@ -27,7 +26,7 @@ public abstract class AbstractPizza {
 		toppingList = new ArrayList<>();
         this.priceWithoutToppings = priceWithoutToppings;
         totalPrice = getTotalPrice();
-        pizzaOrderID = ++orderIDCounter;
+        orderID = ++orderIDCounter;
         
 	}
 
@@ -77,7 +76,7 @@ public abstract class AbstractPizza {
 
 
 	public void setPizzaOrderID(int pizzaOrderID) {
-		this.pizzaOrderID = pizzaOrderID;
+		this.orderID = pizzaOrderID;
 	}
 
 
@@ -91,7 +90,6 @@ public abstract class AbstractPizza {
 
     public void setCookingStrategy(ICookingStrategy cookingStrategy) {
         this.cookingStrategy = cookingStrategy;
-
     }
 
     public List<Toppings> getToppingList() {
@@ -99,7 +97,7 @@ public abstract class AbstractPizza {
     }
 
     public int getPizzaOrderID() {
-        return pizzaOrderID;
+        return orderID;
     }
 
     public double getPriceWithoutToppings() {
@@ -121,8 +119,8 @@ public abstract class AbstractPizza {
     @Override
 	public String toString() {
 		return "Topping List: " + toppingList + ", Price Without Toppings: " + priceWithoutToppings
-				+ ", Total Price: " + totalPrice + ", Pizza Order ID: " + pizzaOrderID + ", Cooking Strategy: "
-				+ getCookingStrategy().getClass().getSimpleName() + ", Cooking Price: " + cookingPrice + ", Pizza Type: " + this.getClass().getSimpleName();
+				+ ", Total Price: " + totalPrice + ", Pizza Order ID: " + orderID + ", Cooking Strategy: "
+				+ cookingStrategy.getClass().getSimpleName() + ", Cooking Price: " + getCookingPrice() + ", Pizza Type: " + this.getClass().getSimpleName();
 	}
     
 }

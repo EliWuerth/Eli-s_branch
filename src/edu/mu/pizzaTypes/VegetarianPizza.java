@@ -3,35 +3,35 @@
  */
 package edu.mu.pizzaTypes;
 
-import java.util.List;
 
-import edu.mu.Cooking.ICookingStrategy;
 import edu.mu.pizza.AbstractPizza;
 import edu.mu.pizza.Toppings;
 
 /**
  * 
  */
-public class HawaiianPizza extends AbstractPizza{
-	
+public class VegetarianPizza extends AbstractPizza{
+
 	/**
 	 * @param toppingList
 	 * @param priceWithoutToppings
 	 * @param pizzaOrderID
 	 */
-	public HawaiianPizza(double priceWithoutToppings) {
-		super(3.00);
+	public VegetarianPizza(double priceWithoutToppings) {
+		super(1.50);
 		// TODO Auto-generated constructor stub
-        addTopping(Toppings.CANADIAN_BACON);
+		
+        addTopping(Toppings.TOMATO);
         addTopping(Toppings.CHEESE);
-        addTopping(Toppings.PINEAPPLE);
-        
-      
+        addTopping(Toppings.BELL_PEPPER);
+        addTopping(Toppings.BLACK_OLIVE);
+        addTopping(Toppings.MUSHROOM);
+        addToppingsToPrice(priceWithoutToppings);
 	}
-	double toppingsPrice;
+
 	@Override
-	protected double addToppingsToPrice(double priceWithoutToppings) {
-this.priceWithoutToppings = priceWithoutToppings;
+	public double addToppingsToPrice(double priceWithoutToppings) {
+		this.priceWithoutToppings = priceWithoutToppings;
 		
 		//set toppingPrice to 0
 		double toppingPrice = 0;
@@ -48,10 +48,8 @@ this.priceWithoutToppings = priceWithoutToppings;
 
 	@Override
 	public double updatePizzaPrice() {
-		// TODO Auto-generated method stub
-		totalPrice=(addToppingsToPrice(getPriceWithoutToppings()) + cookingPrice);
+		totalPrice += cookingPrice;
 		return totalPrice;
 	}
-	
 
 }
